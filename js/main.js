@@ -190,6 +190,36 @@ function eliminaClass(elementRebut, nomClass) {
        mostraMissatge(0);
     }
     
+/*
+function crearHospital() {
+  var nom = document.getElementById("nomHospital").value.toString();
+  var maximPacients = parseInt(document.getElementById("maximPacientsHospital").value);
+
+  if (nom !== "" && maximPacients > 0) {
+      eleID_h1Titol.innerHTML="<h2>Gestió de l'hospital</h2>" + 
+          "<h1><b>" + nom + "</b></h1>";
+      hospital = new Hospital(nom, maximPacients);
+      eleID_divHospital.classList.toggle("d-none");
+
+
+      var cadenaFilaPacient_1,cadenaFilaPacient_2,cadenaFilaPacient_3;
+   /* Creació de tres cadenes cadenaFilaPacient_1, cadenaFilaPacient_2 i cadenaFilaPacient_3
+   ** per faciliar la creació dels <div class="row"> que es crea per a cada pacient.
+   ** */
+   /*
+      var objSelect;
+   /* Creació d'un objecte llisa desplegable, que ompliré amb tots els elements
+   ** de la matriu que acabo de crear llistaMalalties 
+   ** */
+   /*
+    objSelect=`<option value=\"${etCapMalaltia}\">------ Escull un malaltia ------</option>`;
+    for (var indexMalaltia=0; indexMalaltia<llistaMalalties.length; indexMalaltia++) {
+        objSelect+=`<option value=\"${indexMalaltia.toString()}\">${llistaMalalties[indexMalaltia]}</option>`;  
+    }
+*/
+
+
+
 
 
 function mostraGestioHospital(objecte){
