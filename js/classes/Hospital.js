@@ -2,13 +2,11 @@
 
 class Hospital {
   constructor(nom, maximPacients, maximMetges) {
-    nomHospital = nom;
-    maximPacients = maximPacients;
-    pacientsIngressats = [];
-    ingressarPacient = ingressarPacient;
-    donarDaltaPacient = donarDaltaPacient;
-    morirPacient = morirPacient;
+   this.nomHospital = nom;
+   this.maximPacients = maximPacients;
+   this.pacientsIngressats = [];
   }
+  
   
     ingressarPacient(pacient) {
       if (pacient != null && (this.pacientsIngressats.length < this.maximPacients))
