@@ -134,7 +134,7 @@ function amagaBotons() {
 }
 
 function crearHospital() {
-      var nom = document.getElementById("nomHospital").value.toString();
+      var nom = document.getElementById("inputNomHospital").value.toString();
       var maximPacients = parseInt(document.getElementById("maximPacientsHospital").value);
       
       if (nom !== "" && maximPacients > 0) {
