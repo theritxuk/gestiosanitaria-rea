@@ -177,7 +177,7 @@ function crearHospital() {
                   eleID_divHospital.getElementsByClassName("text-center")[0].innerHTML = hospital.nomHospital;
             }
       } else {  /// hospital esta defnit
-            alert("hospital ja existeix!!! " + hospital.nomHospital);
+            alert("L'hospital ja existeix!!! " + hospital.nomHospital);
       }
 }
       
@@ -206,7 +206,7 @@ function crearHospital() {
                               hospital.ingressarPacient(new Pacient(nom, malaltia));
                         }
                   }else{
-                        alert("Error. Has de omplir tots els camps");
+                        alert("Error. Omple tots els camps!");
                         return false;
                   }
             }
