@@ -149,18 +149,30 @@ function crearHospital() {
                   hospital = new Hospital(nom, maximPacients);
                   ocultaGestioHospital(this);
                   mostraGestioPacients(this);
-                  var cadenaFilaPacient_1, cadenaFilaPacient_2, cadenaFilaPacient_3;
+                  var cadenaFilaPacient_1, cadenaFilaPacient_2, cadenaFilaPacient_3, cadenaFilaPacient_4,cadenaFilaPacient_5;
                   cadenaFilaPacient_1 = '<div class="row">' +
                         '<div class="col mb-3">' +
                         '<label for="nomPacient" class="font-weight-bold"> Nom del pacient: </label>' +
                         '<input type="text" id="nomPacient';
-
+                        
                   cadenaFilaPacient_2 = '" class="form-control" required minlength="1" maxlength="100" />' +
+                        '</div>' +
+                        '<div class="col mb-3">' +
+                        '<label for="cognomPacient" class="font-weight-bold"> Cognom del pacient: </label>' +
+                        '<input type="text" id="cognomPacient';
+
+                  cadenaFilaPacient_3 = '" class="form-control" required minlength="1" maxlength="100" />' +
+                   '</div>' +      
+                   '<div class="col mb-3">' +
+                        '<label for="nifPacient" class="font-weight-bold"> Nif del pacient: </label>' +
+                        '<input type="text" id="nifPacient';
+
+                  cadenaFilaPacient_4 = '" class="form-control" required minlength="1" maxlength="100" />' +
                         '  </div> <!-- <div class="col mb-3"> -->' +
                         '  <div class="col mb-3">' +
                         '    <label for="malaltia" class="font-weight-bold">Malaltia a tractar: </label>' +
                         '    <select id="malaltia';
-                  cadenaFilaPacient_3 = '" class="form-control" required minlength="1" maxlength="100" />' +
+                  cadenaFilaPacient_5 = '" class="form-control" required minlength="1" maxlength="100" />' +
                         '  </div> <!-- <div class="col mb-3"> -->' +
                         '</div> <!-- <div class="row"> -->';
 
@@ -170,7 +182,11 @@ function crearHospital() {
                               pacient.toString() +
                               cadenaFilaPacient_2 +
                               pacient.toString() +
-                              cadenaFilaPacient_3);
+                              cadenaFilaPacient_3+
+                              pacient.toString() +
+                              cadenaFilaPacient_4+
+                              pacient.toString() +
+                              cadenaFilaPacient_5);
                               document.getElementById("malaltia" + pacient.toString()).innerHTML = SelectMalalties();
                   }
                   eleID_divHospital.getElementsByClassName("text-center")[0].innerHTML = hospital.nomHospital;
@@ -186,6 +202,8 @@ function crearHospital() {
       if (hospital.pacientsIngressats.length==hospital.maximPacients){
             for (var pacient = 0; pacient < hospital.maximPacients; pacient++) {
                   document.getElementById("nomPacient" + pacient).value = hospital.pacientsIngressats[pacient].nom;
+                  document.getElementById("cognomPacient" + pacient).value = hospital.pacientsIngressats[pacient].cognom;
+                  document.getElementById("nifPacient" + pacient).value = hospital.pacientsIngressats[pacient].nif;
                   document.getElementById("malaltia" + pacient).value = hospital.pacientsIngressats[pacient].malaltia;
             }
       } else {
@@ -193,16 +211,23 @@ function crearHospital() {
 
 
             var nom = "";
+            var cognom = "";
+            var nif = "";
             var malaltia = "";
+            debugger;
             for (var pacient = 0; pacient < hospital.maximPacients; pacient++) {
                   nom = document.getElementById("nomPacient" + pacient.toString()).value.toString();
                   console.log(nom);
+                  cognom = document.getElementById("cognomPacient" + pacient.toString()).value.toString();
+                  console.log(cognom);
+                  nif = document.getElementById("nifPacient" + pacient.toString()).value.toString();
+                  console.log(nif);
                   malaltia = document.getElementById("malaltia" + pacient.toString()).value.toString();
                   console.log(malaltia);
       
-                  if (nom !== "" && malaltia !== "") {
+                  if (nom !== "" && cognom !== "" && nif !== "" && malaltia !== "") {
                         if (hospital !== null) {
-                              hospital.ingressarPacient(new Pacient(nom, malaltia));
+                              hospital.ingressarPacient(new Pacient(nom, cognom, nif, malaltia));
                         }
                   }else{
                         alert("Error. Omple tots els camps!");
@@ -219,6 +244,12 @@ function crearHospital() {
                   document.getElementById("dadesGestio").innerHTML += ('<div class="row" id="dadesGestioPacient' + pacient.toString() + '">' +
                   '<div class="col mb-3">' +
                         '<label for="nomPacientGestio" class="font-weight-bold">Nom: </label>   <p id="nomPacientGestio' + pacient.toString() + '">' + hospital.pacientsIngressats[pacient].nom + '</p>' +
+                  '</div>' +
+                  '<div class="col mb-3">' +
+                        '<label for="cognomPacientGestio" class="font-weight-bold">Nom: </label>   <p id="cognomPacientGestio' + pacient.toString() + '">' + hospital.pacientsIngressats[pacient].cognom + '</p>' +
+                  '</div>' +
+                  '<div class="col mb-3">' +
+                        '<label for="nifPacientGestio" class="font-weight-bold">Nom: </label>   <p id="nifPacientGestio' + pacient.toString() + '">' + hospital.pacientsIngressats[pacient].nif + '</p>' +
                   '</div>' +
                   '<div class="col mb-3">' +
                         '<label for="malaltia" class="font-weight-bold">Malaltia: </label>  <p id="malaltiaGestio' + pacient.toString() + '">' + hospital.pacientsIngressats[pacient].malaltia + '</p>' +
@@ -239,7 +270,7 @@ function crearHospital() {
         document.getElementById("dadesGestioPacient" + llitPacient.toString()).remove();
       
         if (totsLlitsBuits())
-        dadesGestio.innerHTML = ('<p class="text-center">L\'Hospital ' + hospital.nom + ' no té cap pacient ingressat en aquests moments.</p>' +
+        dadesGestio.innerHTML = ('<p class="text-center">L\'Hospital ' + hospital.nomHospital + ' no té cap pacient ingressat en aquests moments.</p>' +
         '<div class="text-center">' +
           '<button type="button" class="btn btn-primary mt-4" onClick="window.location.reload()">Tornar a començar</button>' +
         '</div>');
@@ -250,7 +281,7 @@ function crearHospital() {
         document.getElementById("dadesGestioPacient" + llitPacient.toString()).remove();
       
         if (totsLlitsBuits())
-          dadesGestio.innerHTML = ('<p class="text-center">L\'Hospital ' + hospital.nom + ' no té cap pacient ingressat en aquests moments.</p>' +
+          dadesGestio.innerHTML = ('<p class="text-center">L\'Hospital ' + hospital.nomHospital + ' no té cap pacient ingressat en aquests moments.</p>' +
           '<div class="text-center">' +
             '<button type="button" class="btn btn-primary mt-4" onClick="window.location.reload()">Tornar a començar</button>' +
           '</div>');

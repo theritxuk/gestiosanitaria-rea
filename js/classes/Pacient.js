@@ -1,10 +1,9 @@
 'use strict'
 
-class Pacient {
-  constructor(nom, malaltia) {
-    this.nom = nom;
-    this.malaltia = malaltia;
-    
+class Pacient extends Persona {
+  constructor(nomRebut, cognomRebut, nifRebut, malaltiaRebuda) {
+    super	(nomRebut, cognomRebut, nifRebut);
+    this.malaltia = malaltiaRebuda;
   }
 }
 
