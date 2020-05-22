@@ -6,7 +6,19 @@
     <link rel="icon" href="img/favicon.ico" type="image/x-icon"> 
     <title id="titApp">Aplicació gestió Sanitària</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script type="text/javascript">
+    
+      function cambiaFondo(x){
+        console.log(x.value);
 
+        var body = document.getElementById("body");
+        body.style.backgroundColor = x.value;
+      }
+    
+    
+    
+    
+    </script>
 <!-- PER MODAL 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -24,14 +36,57 @@
     <script src="./js/classes/Hospital.js"></script>
     <script src="./js/classes/Metge.js"></script>
     <script src="./js/classes/Pacient.js"></script>
+
+    <script>
+    function zoomin(){
+        var myImg = document.getElementById("container");
+        var currWidth = myImg.clientWidth;
+        if(currWidth == 2500) return false;
+         else{
+            myImg.style.width = (currWidth + 100) + "px";
+        } 
+    }
+    function zoomout(){
+        var myImg = document.getElementById("container");
+        var currWidth = myImg.clientWidth;
+        if(currWidth == 100) return false;
+		 else{
+            myImg.style.width = (currWidth - 100) + "px";
+        }
+    }
+</script>
    
   </head>
-  <body>
+
+  <body id="body">
+    <div class="text-center">
+      <br>
+      <div id="navbar" style="margin-left:80%">
+        <button type="button" onclick="zoomin()">+ Zoom</button>
+        <button type="button" onclick="zoomout()">- Zoom </button>
+        </div>
+    <br>
+    <select style="margin-left:80%" name="fondo" id="fondo" onchange="cambiaFondo(this)">
+      <option value="white">Blanc</option>
+      <option value="black">Negre</option>
+      <option value="grey">Gris</option>
+    </select>
+    <br>
+    
+    
+
+      <!-- INICI container -->
+    
+    <div class="container" id="container">
+      <h1  class="text-center mt-3 mb-3" >Aplicació gestió Sanitària</h1>
+
+  
     <!-- INICI container -->
     <a href="disseny.html">Perquè aquest disseny?</a>
     <div class="container">
       <h1  class="text-center mt-3 mb-3" >Aplicació gestió Sanitària Branca activitat 10
       </h1>
+
       <!-- ==================================================================================== -->  
       <!-- INICI Missatge Modal -->
       <div class="modal fade" id="divEspaiModal">
@@ -80,6 +135,9 @@
             <button type="button" id="btnGestMetges" class="btn btn-primary btn-block"  onClick="mostraGestioMetges()">Metges</button>
             <br>
             <button type="button" id="btnGestAplicacio" class="btn btn-primary btn-block"  onClick="mostraGestioApp()">Control</button>
+            
+            <button id="btnGestDisseny" class="btn btn-primary btn-block" onclick="window.location.href='disseny.html'">Disseny</button>
+            
             <!-- <button type="button" class="btn btn-primary  btn-block" data-toggle="modal" data-target="#espaiModal">Open modal</button> -->
         </div>
         <!-- FINAL COLUMNA 1 >md 02 < -- > bloc control equerre -->
@@ -91,7 +149,7 @@
           <div class="w-100 mx-auto align-items-center border mt-8 mb-8 p-4 rounded shadow bg-white" id="divPresentacio">
               <!-- mt margin top = 8    mt margin bottom = 8 -->
               <h4  class="text-center mt-3 mb-3" >Benvigut a l'aplicació de gestió Sanitària</h4>
-              <p>Amb els botons del panell lateral, podràs accedir a tots els menus!</p>
+              <center><p>Amb els botons del panell lateral, podràs accedir a tots els menus!</p></center>
           </div>
           <!-- FINAL eleID_divPresentacio -->
           <!-- ------------------------------------------------------------------------------------ -->
