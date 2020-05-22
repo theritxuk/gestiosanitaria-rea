@@ -56,9 +56,6 @@ taula_missatges[2]=[];
 taula_missatges[2][intTitol]="El camp Nom Hospital és obligatori!";
 taula_missatges[2][intMissatge]="Cal que entris un nom al camp Hospital!";
 
-//    let metge = new Metge('Ivan', 'Soriano', '12345678A', 'Oncologia');
-//     alert(JSON.stringify(metge));
-
 function comprovaCampBuit(objecteRebut) {
       if (objecteRebut.value == "") {
             mostraMissatge(2);
@@ -139,6 +136,7 @@ function amagaBotons() {
 }
 
 
+
 function crearHospital() {
 
       console.log("hospital = " + hospital);
@@ -161,7 +159,7 @@ function crearHospital() {
                         '  </div> <!-- <div class="col mb-3"> -->' +
                         '  <div class="col mb-3">' +
                         '    <label for="malaltia" class="font-weight-bold">Malaltia a tractar: </label>' +
-                        '    <input type="text" id="malaltia';
+                        '    <select id="malaltia';
                   cadenaFilaPacient_3 = '" class="form-control" required minlength="1" maxlength="100" />' +
                         '  </div> <!-- <div class="col mb-3"> -->' +
                         '</div> <!-- <div class="row"> -->';
@@ -173,6 +171,7 @@ function crearHospital() {
                               cadenaFilaPacient_2 +
                               pacient.toString() +
                               cadenaFilaPacient_3);
+                              document.getElementById("malaltia" + pacient.toString()).innerHTML = SelectMalalties();
                   }
                   eleID_divHospital.getElementsByClassName("text-center")[0].innerHTML = hospital.nomHospital;
             }
@@ -233,6 +232,7 @@ function crearHospital() {
         }
       }
 }
+
       
       function gestioDonarDalta(llitPacient) {
         hospital.donarDaltaPacient(llitPacient);
@@ -335,6 +335,18 @@ function mostraGestioHospital(objecte){
       eleID_divHospital.classList.toggle("d-none");
       amagaBotons();
    }
+
+   function mostraGestioPacient(objecte){
+      document.getElementById('tancaDivPacient').onclick = function tanca() {
+            eleID_divPresentacio.classList.toggle("d-none");
+            eleID_divPacient.classList.toggle("d-none");
+            mostraBotons();
+      }
+      eleID_divPresentacio.classList.toggle("d-none");
+      eleID_divPacient.classList.toggle("d-none");
+      amagaBotons();
+   }
+   
 
 function ocultaGestioHospital(objecteRebut){
             eleID_divPresentacio.classList.toggle("d-none");

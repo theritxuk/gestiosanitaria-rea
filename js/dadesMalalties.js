@@ -25,3 +25,13 @@ const llistaMalalties = ['Alzheimer','Anells vasculars','Atrèsia pulmonar amb c
                     'Tumor extraocular en la infància (Rabdomiosarcoma)',
                     'Tumor intraocular en la infància (Retinoblastoma)','Tumors d’òrbita','Ventricle únic',
                     'Virus del papil·loma humà (VPH)'];
+                    
+                    
+                    function SelectMalalties(){
+                        var Select;
+                        for (var malalties = 0; malalties < llistaMalalties.length; malalties++) {
+                            Select += `<option value=\"${llistaMalalties[malalties]}\">${llistaMalalties[malalties]}</option>`;
+                        }
+                        Select += '</select>';
+                        return Select;
+                    }
