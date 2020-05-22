@@ -75,7 +75,7 @@
               <h4 class="text-center" id="h4TitolPanell">Panell de Gestió</h4> <!-- mt margin top = 5 -->
               <!-- FINAL eleID_h4TitolPanell -->
             <button type="button" id="btnGestHospitals" class="btn btn-primary btn-block" onClick="mostraGestioHospital(this)">Hospital</button>
-            <button type="button" id="btnGestPacients" class="btn btn-primary btn-block"  onClick="mostraGestioPacients(this)">Pacients</button>
+            <button type="button" id="btnGestPacients" class="btn btn-primary btn-block"  onClick="mostraGestioPacient(this)">Pacients</button>
             <button type="button" id="btnGestMalalties" class="btn btn-primary btn-block"  onClick="mostraGestioMalaties(this)">Malalties</button>
             <button type="button" id="btnGestMetges" class="btn btn-primary btn-block"  onClick="mostraGestioMetges()">Metges</button>
             <br>
@@ -136,12 +136,13 @@
           <!-- INICI divPacients -->
           <div class="w-100 mx-auto align-items-center border mt-8 mb-8 p-4 rounded shadow bg-white d-none" id="divPacient">
              <!-- w-100  = width: 100% -->
+             <a href="#" class="close" data-dismiss="alert" aria-label="close" id="tancaDivPacient"><h3>&times;</h3></a>
             <h2 class="text-center">Pacients</h2>
             <p class="text-center">Introdueix les dades del pacients que vols ingressar:</p>
             <div id="dadesPacient"></div>
             <div class="text-center">
               <button type="button" class="btn btn-primary mt-4" onClick="ingressarPacients()">Ingressar</button>
-              <button type="button" class="btn btn-primary mt-4" onClick="ocultaGestioPacients(this)">Torna</button>
+              
             </div>
           </div>
           <!-- FINAL divPacients -->

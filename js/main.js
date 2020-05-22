@@ -336,6 +336,18 @@ function mostraGestioHospital(objecte){
       amagaBotons();
    }
 
+   function mostraGestioPacient(objecte){
+      document.getElementById('tancaDivPacient').onclick = function tanca() {
+            eleID_divPresentacio.classList.toggle("d-none");
+            eleID_divPacient.classList.toggle("d-none");
+            mostraBotons();
+      }
+      eleID_divPresentacio.classList.toggle("d-none");
+      eleID_divPacient.classList.toggle("d-none");
+      amagaBotons();
+   }
+   
+
 function ocultaGestioHospital(objecteRebut){
             eleID_divPresentacio.classList.toggle("d-none");
             eleID_divHospital.classList.toggle("d-none");
